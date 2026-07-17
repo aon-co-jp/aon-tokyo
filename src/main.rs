@@ -67,6 +67,8 @@ fn page_shell(title: &str, body: &str) -> String {
 body {{ font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; max-width: 780px; margin: 2rem auto; padding: 0 1rem; line-height: 1.7; color: #222; }}
 h1 {{ font-size: 1.6rem; }}
 h2 {{ font-size: 1.2rem; margin-top: 2rem; border-bottom: 2px solid #eee; padding-bottom: 0.3rem; }}
+a {{ color: #222; }}
+a:visited {{ color: #222; }}
 nav a {{ margin-right: 1rem; }}
 ul.linklist li {{ margin-bottom: 0.5rem; }}
 footer {{ margin-top: 3rem; font-size: 0.85rem; color: #777; }}
