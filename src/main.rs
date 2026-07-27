@@ -382,8 +382,8 @@ fn municipal_page() -> Html<String> {
 <li>{fermentation_g}</li>
 <li>{tunnel_compost_yt}</li>
 <li>{tunnel_compost_g}</li>
-<li>{mercury_filter_g}</li>
 <li>{mercury_filter_yt}</li>
+<li>{mercury_filter_g}</li>
 <li>{mixed_fuel_yt}</li>
 <li>{mixed_fuel_g}</li>
 <li>{plastic_oil_yt}</li>
