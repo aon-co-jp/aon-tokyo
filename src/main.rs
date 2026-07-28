@@ -6,7 +6,8 @@
 //! 運用、aruaru-tokyo-server と同じ配置パターン)。
 //!
 //! テーマ: AI・IT・WEB・オーディオ(JBL・B&W等の大型スピーカー含む)。
-//! aruaru.tokyoの既存TOPページとは相互リンクで連携する(統合)。
+//! **2026-07-28追記**: aruaru.tokyo・icpo.tokyo・fbi.tokyoへのリンクは
+//! ユーザー指示により削除済み(相互リンク関係を解消)。
 //!
 //! ## 「クリックで検索」リンクの方針(2026-07-17、ユーザー指示)
 //! 検索結果の長いURL(トラッキングパラメータだらけのGoogle/YouTube検索結果
@@ -18,7 +19,6 @@ use poem::listener::TcpListener;
 use poem::web::Html;
 use poem::{get, handler, Route, Server};
 
-const ARUARU_TOKYO_URL: &str = "https://aruaru.tokyo/";
 const GITHUB_ORG_URL: &str = "https://github.com/aon-co-jp";
 
 /// 手書きのpercent-encoding(RFC 3986のquery成分に必要な最小限の置換のみ)。
@@ -94,7 +94,7 @@ footer {{ margin-top: 3rem; font-size: 0.85rem; color: #777; }}
 </style>
 </head>
 <body>
-<nav><a href="/">TOP</a> <a href="/links">リンク集</a> <a href="/municipal">地域・企業誘致提案</a> <a href="/cancer">がん治療研究</a> <a href="{ARUARU_TOKYO_URL}">aruaru.tokyo</a></nav>
+<nav><a href="/">TOP</a> <a href="/links">リンク集</a> <a href="/municipal">地域・企業誘致提案</a> <a href="/cancer">がん治療研究</a></nav>
 {body}
 <footer><p>このサイトは aon.tokyo / aon.co.jp として同一内容を配信しています。 <a href="{GITHUB_ORG_URL}">GitHub (aon-co-jp)</a></p></footer>
 </body>
@@ -121,13 +121,10 @@ fn top() -> Html<String> {
 <a href="https://aon.tokyo/">aon.tokyo</a> ・
 <a href="https://aon.tokyo/cancer">aon.tokyo/cancer</a> ・
 <a href="https://aon.co.jp/">aon.co.jp</a> ・
-<a href="https://aruaru.tokyo/">aruaru.tokyo</a> ・
 <a href="https://karu.tokyo/">karu.tokyo</a> ・
-<a href="https://icpo.tokyo/">icpo.tokyo</a> ・
-<a href="https://fbi.tokyo/">fbi.tokyo</a> ・
 <a href="https://runo.tokyo/">runo.tokyo</a></p>
 <p>AI・IT・WEB開発、そして本格オーディオ(JBL・B&amp;Wなどの大型スピーカー・アンプ)を扱うサイトです。
-aon.tokyo と aon.co.jp は同一内容を配信しています。 姉妹サイト <a href="{ARUARU_TOKYO_URL}">aruaru.tokyo</a> と相互に連携しています。</p>
+aon.tokyo と aon.co.jp は同一内容を配信しています。</p>
 
 <h2>AI・IT・WEB</h2>
 <ul class="linklist">
@@ -435,10 +432,7 @@ fn cancer_page() -> Html<String> {
 <a href="https://aon.tokyo/">aon.tokyo</a> ・
 <a href="https://aon.tokyo/cancer">aon.tokyo/cancer</a> ・
 <a href="https://aon.co.jp/">aon.co.jp</a> ・
-<a href="https://aruaru.tokyo/">aruaru.tokyo</a> ・
 <a href="https://karu.tokyo/">karu.tokyo</a> ・
-<a href="https://icpo.tokyo/">icpo.tokyo</a> ・
-<a href="https://fbi.tokyo/">fbi.tokyo</a> ・
 <a href="https://runo.tokyo/">runo.tokyo</a></p>
 <p>以下は報道・公開情報として紹介するのみで、当サイト独自の医療的な効能や安全性の主張・推奨は行っていません。
 詳細は各リンク先をご覧ください。</p>
