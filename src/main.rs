@@ -163,6 +163,17 @@ aon.tokyo と aon.co.jp は同一内容を配信しています。</p>
 </ul>
 
 <div class="space-video" style="margin: 1.5rem 0; text-align: center;">
+<h2 style="font-size: 1.15rem; border-bottom: none; margin-top: 0;">鴨頭さんがマクドナルドの最低な店長だった話。指示、命令では人は動かない…元マクドナルドの店長が語る現場での対応</h2>
+<div style="position: relative; width: 100%; padding-top: 56.25%; margin: 1rem 0;">
+<iframe width="100%" height="100%" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 6px;" src="https://www.youtube.com/embed/vCTkpVXHmU4" title="鴨頭さんがマクドナルドの最低な店長だった話。指示、命令では人は動かない…元マクドナルドの店長が語る現場での対応" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<p style="font-size: 0.85rem; color: #555;">動画が表示されない場合はこちらで検索 / If the video does not play, search here: {kamogashira_video_search}</p>
+<p style="font-size: 0.85rem; color: #555;">YouTubeのリンクが切れたらYouTube検索と次のURLでもご視聴になれます。 /
+If the YouTube link breaks, you can also watch it via YouTube search or the following URL:
+<a href="https://www.facebook.com/reel/2030814436950418?locale=ja_JP" target="_blank" rel="noopener noreferrer">Facebook(予備 / backup)</a></p>
+</div>
+
+<div class="space-video" style="margin: 1.5rem 0; text-align: center;">
 <h2 style="font-size: 1.15rem; border-bottom: none; margin-top: 0;">想像を超えた宇宙の広さ、地球のちっぽけさを体感してください。<br><span style="color:#555;">Experience the vastness of space beyond imagination, and how tiny Earth truly is.</span></h2>
 <div style="position: relative; width: 100%; padding-top: 56.25%; margin: 1rem 0;">
 <iframe width="100%" height="100%" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 6px;" src="https://www.youtube.com/embed/HXwtnUEga7M" title="想像を超えた宇宙の広さ、地球のちっぽけさを体感してください。 / Experience the vastness of space beyond imagination, and how tiny Earth truly is." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -292,6 +303,10 @@ The items below are simply introduced as reported information; no independent me
         universe_scale_video_search = youtube_search_link(
             "宇宙の大きさを体感できる動画 / A Video to Experience the Scale of the Universe",
             "宇宙の大きさを体感できる動画 / A Video to Experience the Scale of the Universe"
+        ),
+        kamogashira_video_search = youtube_search_link(
+            "鴨頭嘉人（かもがしら よしひと）の動画をYouTubeで検索",
+            "鴨頭嘉人（かもがしら よしひと）"
         ),
     );
     Html(page_shell("aon.tokyo / aon.co.jp — AI・IT・WEB・AUDIO", &body))
