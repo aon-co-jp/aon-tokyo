@@ -227,9 +227,45 @@ online video chat services. Custom/special orders for SAP customization
 work and web app development are also welcome — please feel free to
 reach out anytime!
 </p>
+
+<h2>民間のガン治療法に関する報道 / News on Cancer Treatment Research</h2>
+<p style="font-size:.85rem;color:#777;">以下は報道・公開情報の紹介のみで、独自の医療的な効能・安全性の主張は行っていません。 /
+The items below are simply introduced as reported information; no independent medical claims are made.</p>
+<ul class="linklist">
+<li>衝撃波で腫瘍を破壊「メスも針も使わない」肝臓がんの新治療法　大阪公立大の研究チームが特定臨床研究を開始　来年中の薬事承認を目指す<br>
+<span style="color:#777;">Destroying Tumors with Shockwaves — a New "No Scalpel, No Needle" Liver Cancer Treatment: Osaka Metropolitan University Research Team Begins Specified Clinical Research, Aiming for Drug/Medical Device Approval Within the Next Year</span><br>
+<a href="https://www.youtube.com/watch?v=hRFXYCGX8Fo" target="_blank" rel="noopener noreferrer">▶️ YouTube</a> /
+<a href="https://www.facebook.com/masahiro.ishizuka.54?locale=ja_JP" target="_blank" rel="noopener noreferrer">📘 Facebook</a></li>
+<li>マックトリガー。世界初！からだ自身が"がん治療"　九州大学が開発<br>
+<span style="color:#777;">Mac Trigger. A World First! The Body Itself Fights Cancer — Developed by Kyushu University</span><br>
+<a href="https://www.youtube.com/watch?v=84EkcJmgmnQ" target="_blank" rel="noopener noreferrer">▶️ YouTube</a> /
+<a href="https://www.facebook.com/reel/1793445321653771?locale=ja_JP" target="_blank" rel="noopener noreferrer">📘 Facebook(予備 / backup)</a></li>
+<li>がんが小さくなる 金沢大学がん薬物療法とは？ 分子標的療法<br>
+<span style="color:#777;">Cancer Shrinkage: What Is Kanazawa University's Cancer Drug Therapy? Molecular Targeted Therapy</span><br>
+<a href="https://youtu.be/u4xTbs4JZ30" target="_blank" rel="noopener noreferrer">▶️ YouTube</a></li>
+<li><a href="https://aon.tokyo/cancer" target="_blank" rel="noopener noreferrer">民間のガン治療法についての情報は aon.tokyo/cancer をご覧ください</a><br>
+<span style="color:#777;">For information on non-clinical/private-sector cancer treatment approaches, see aon.tokyo/cancer.</span></li>
+<li>{cancer_search_jp} / {cancer_search_en}</li>
+<li>{cancer_video_search_jp} / {cancer_video_search_en}</li>
+<li>{banana_search_jp} / {banana_search_en}</li>
+<li>{baking_soda_search_jp} / {baking_soda_search_en}</li>
+<li>{citric_acid_search_jp} / {citric_acid_search_en}</li>
+</ul>
+
+<p style="text-align:center;font-size:1.4rem;"><a href="https://ameblo.jp/www-aon/entry-12975130765.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;font-weight:600;">📝 足振りで腰痛改善＋ダイエット</a></p>
 "#,
         ai_it_web = google_search_link("AI・IT・WEB開発の最新動向を検索", "AI IT WEB開発 最新動向"),
         ai_animation = google_search_link("AIでアニメーション作成している企業のホームページを検索", "AI企業 AIでアニメーション作成 している ホームページ"),
+        cancer_search_jp = youtube_search_link("がんの治療法について調べる", "がん 治療法"),
+        cancer_search_en = youtube_search_link("Cancer treatment methods", "cancer treatment methods"),
+        cancer_video_search_jp = google_video_search_link("がんの治療法の動画を調べる", "がん 治療法"),
+        cancer_video_search_en = google_video_search_link("Cancer treatment method videos", "cancer treatment methods"),
+        banana_search_jp = youtube_search_link("「バナナ ガン治療法」で調べる", "バナナ ガン治療法"),
+        banana_search_en = youtube_search_link("Search \"banana cancer treatment\"", "banana cancer treatment"),
+        baking_soda_search_jp = youtube_search_link("「重曹水 ガン治療法」で調べる", "重曹水 ガン治療法"),
+        baking_soda_search_en = youtube_search_link("Search \"baking soda water cancer treatment\"", "baking soda water cancer treatment"),
+        citric_acid_search_jp = youtube_search_link("「クエン酸水 ガン治療法」で調べる", "クエン酸水 ガン治療法"),
+        citric_acid_search_en = youtube_search_link("Search \"citric acid water cancer treatment\"", "citric acid water cancer treatment"),
         accuphase_site = google_search_link("Accuphase 公式サイト", "Accuphase アキュフェーズ 公式サイト"),
         accuphase_yt = youtube_search_link("Accuphase アンプ レビュー", "Accuphase アキュフェーズ アンプ レビュー"),
         luxman_site = google_search_link("LUXMAN 公式サイト", "LUXMAN ラックスマン 公式サイト"),
