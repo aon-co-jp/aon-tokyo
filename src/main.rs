@@ -128,6 +128,9 @@ aon.tokyo と aon.co.jp は同一内容を配信しています。</p>
 
 <h2>AI・IT・WEB</h2>
 <ul class="linklist">
+<li>{claude_code_desktop_search}</li>
+<li><a href="https://audiocafe.tokyo/aruaru/" target="_blank" rel="noopener noreferrer">audiocafe.tokyo/aruaru(IT・建築系求人 日本語版)</a></li>
+<li><a href="https://audiocafe.tokyo/aruaru/index-en.php" target="_blank" rel="noopener noreferrer">🌐 audiocafe.tokyo/aruaru (English, translated by Claude Code)</a></li>
 <li>{ai_it_web}</li>
 <li>{ai_animation}</li>
 </ul>
@@ -276,6 +279,7 @@ The items below are simply introduced as reported information; no independent me
 
 <p style="text-align:center;font-size:1.4rem;"><a href="https://ameblo.jp/www-aon/entry-12975130765.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;font-weight:600;">📝 足振りで腰痛改善＋ダイエット</a></p>
 "#,
+        claude_code_desktop_search = youtube_search_link("AI駆動開発 CLAUDE CODE DESKTOP", "AI駆動開発 CLAUDE CODE DESKTOP"),
         ai_it_web = google_search_link("AI・IT・WEB開発の最新動向を検索", "AI IT WEB開発 最新動向"),
         ai_animation = google_search_link("AIでアニメーション作成している企業のホームページを検索", "AI企業 AIでアニメーション作成 している ホームページ"),
         cancer_search_jp = youtube_search_link("がんの治療法について調べる", "がん 治療法"),
