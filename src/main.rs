@@ -173,6 +173,17 @@ If the YouTube link breaks, you can also watch it via YouTube search or the foll
 <a href="https://www.facebook.com/reel/1514589143178165?locale=ja_JP" target="_blank" rel="noopener noreferrer">Facebook(予備 / backup)</a></p>
 </div>
 
+<div class="space-video" style="margin: 1.5rem 0; text-align: center;">
+<h2 style="font-size: 1.15rem; border-bottom: none; margin-top: 0;">宇宙の大きさを体感できる動画<br><span style="color:#555;">A Video to Experience the Scale of the Universe</span></h2>
+<div style="position: relative; width: 100%; padding-top: 56.25%; margin: 1rem 0;">
+<iframe width="100%" height="100%" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 6px;" src="https://www.youtube.com/embed/jM02C3uSBXY" title="宇宙の大きさを体感できる動画 / A Video to Experience the Scale of the Universe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<p style="font-size: 0.85rem; color: #555;">動画が表示されない場合はこちらで検索 / If the video does not play, search here: {universe_scale_video_search}</p>
+<p style="font-size: 0.85rem; color: #555;">YouTubeのリンクが切れたらYouTube検索と次のURLでもご視聴になれます。 /
+If the YouTube link breaks, you can also watch it via YouTube search or the following URL:
+<a href="https://www.facebook.com/reel/2142495496668566?locale=ja_JP" target="_blank" rel="noopener noreferrer">Facebook(予備 / backup)</a></p>
+</div>
+
 <h2>世界平和・環境保護・貿易への願い / A Wish for World Peace, Environmental Care & Trade</h2>
 <p>
 戦争や兵器の高度化よりも、世界中が地球の自然環境を大切にしながら、
@@ -277,6 +288,10 @@ The items below are simply introduced as reported information; no independent me
         space_video_search = youtube_search_link(
             "想像を超えた宇宙の広さ、地球のちっぽけさを体感してください。 / Experience the vastness of space beyond imagination, and how tiny Earth truly is.",
             "想像を超えた宇宙の広さ、地球のちっぽけさを体感してください。 / Experience the vastness of space beyond imagination, and how tiny Earth truly is."
+        ),
+        universe_scale_video_search = youtube_search_link(
+            "宇宙の大きさを体感できる動画 / A Video to Experience the Scale of the Universe",
+            "宇宙の大きさを体感できる動画 / A Video to Experience the Scale of the Universe"
         ),
     );
     Html(page_shell("aon.tokyo / aon.co.jp — AI・IT・WEB・AUDIO", &body))
