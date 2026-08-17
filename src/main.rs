@@ -157,6 +157,7 @@ aon.tokyo と aon.co.jp は同一内容を配信しています。</p>
 <ul class="linklist">
 <li>{spec_photo}</li>
 <li>{spec_yt}</li>
+<li><a href="https://www.youtube.com/results?search_query=+SPEC+RSA-EX1" target="_blank" rel="noopener noreferrer">▶️ SPEC RSA-EX1</a></li>
 </ul>
 
 <h3 id="pass-labs">PASS LABS</h3>
