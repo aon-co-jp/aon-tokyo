@@ -15,9 +15,10 @@
 //! `?q=`/`?search_query=`形式の短いURLを組み立て、クリックした瞬間に
 //! ブラウザ側でその都度検索・表示させる(`search_link`/`youtube_search_link`)。
 
+use poem::http::StatusCode;
 use poem::listener::TcpListener;
 use poem::web::Html;
-use poem::{get, handler, Route, Server};
+use poem::{get, handler, IntoResponse, Response, Route, Server};
 
 const GITHUB_ORG_URL: &str = "https://github.com/aon-co-jp";
 
@@ -541,6 +542,55 @@ this site does not add its own medical claims about efficacy or safety. Please s
     Html(page_shell("がん治療研究に関する報道 | aon.tokyo", &body))
 }
 
+/// カレントディレクトリ直下に置かれた特定の資料ファイル(PDF/XLSX)を
+/// 配信する。2026-08-31、ユーザー報告により発覚: `r.pdf`/`r.xlsx`/
+/// `s.pdf`/`s.xlsx`はディスク上には存在していたが、このバイナリの
+/// ルーターに対応するルートが1つも定義されておらず`aon.tokyo/r.pdf`等が
+/// 404になっていた(open-web-serverのリバースプロキシ自体は正常に
+/// このバイナリまで転送していた——受け側にルートが無かっただけ)。
+/// 任意のファイル名を受け付ける汎用静的配信ではなく、既知のファイル名
+/// 4件のみを個別ルートとして明示登録する(ディレクトリトラバーサル対策・
+/// 意図しないファイルの公開を避けるため)。
+async fn serve_known_asset(filename: &'static str, content_type: &'static str) -> Response {
+    match tokio::fs::read(filename).await {
+        Ok(bytes) => Response::builder()
+            .header("Content-Type", content_type)
+            .body(bytes),
+        Err(e) => {
+            tracing::warn!(filename, error = %e, "failed to read static asset");
+            StatusCode::NOT_FOUND.into_response()
+        }
+    }
+}
+
+#[handler]
+async fn serve_r_pdf() -> Response {
+    serve_known_asset("r.pdf", "application/pdf").await
+}
+
+#[handler]
+async fn serve_r_xlsx() -> Response {
+    serve_known_asset(
+        "r.xlsx",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+    .await
+}
+
+#[handler]
+async fn serve_s_pdf() -> Response {
+    serve_known_asset("s.pdf", "application/pdf").await
+}
+
+#[handler]
+async fn serve_s_xlsx() -> Response {
+    serve_known_asset(
+        "s.xlsx",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+    .await
+}
+
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
     tracing_subscriber::fmt::init();
@@ -549,7 +599,11 @@ async fn main() -> Result<(), std::io::Error> {
         .at("/healthz", get(healthz))
         .at("/links", get(links_page))
         .at("/municipal", get(municipal_page))
-        .at("/cancer", get(cancer_page));
+        .at("/cancer", get(cancer_page))
+        .at("/r.pdf", get(serve_r_pdf))
+        .at("/r.xlsx", get(serve_r_xlsx))
+        .at("/s.pdf", get(serve_s_pdf))
+        .at("/s.xlsx", get(serve_s_xlsx));
 
     tracing::info!("aon-tokyo-server listening on 127.0.0.1:4200");
     Server::new(TcpListener::bind("127.0.0.1:4200")).run(app).await
