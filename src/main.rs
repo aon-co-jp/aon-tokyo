@@ -55,6 +55,16 @@ async fn serve_cancer() -> Response {
 }
 
 #[handler]
+async fn serve_p() -> Response {
+    serve_known_asset("static/p.html", "text/html; charset=utf-8").await
+}
+
+#[handler]
+async fn serve_k() -> Response {
+    serve_known_asset("static/k.html", "text/html; charset=utf-8").await
+}
+
+#[handler]
 async fn serve_style_css() -> Response {
     serve_known_asset("static/style.css", "text/css; charset=utf-8").await
 }
@@ -97,6 +107,8 @@ async fn main() -> Result<(), std::io::Error> {
         .at("/links", get(serve_links))
         .at("/municipal", get(serve_municipal))
         .at("/cancer", get(serve_cancer))
+        .at("/p", get(serve_p))
+        .at("/k", get(serve_k))
         .at("/style.css", get(serve_style_css))
         .at("/r.pdf", get(serve_r_pdf))
         .at("/r.xlsx", get(serve_r_xlsx))
