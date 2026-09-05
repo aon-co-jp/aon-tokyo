@@ -70,6 +70,11 @@ async fn serve_style_css() -> Response {
 }
 
 #[handler]
+async fn serve_kikou_video() -> Response {
+    serve_known_asset("video/kikou-practice.mp4", "video/mp4").await
+}
+
+#[handler]
 async fn serve_r_pdf() -> Response {
     serve_known_asset("r.pdf", "application/pdf").await
 }
@@ -110,6 +115,7 @@ async fn main() -> Result<(), std::io::Error> {
         .at("/p", get(serve_p))
         .at("/k", get(serve_k))
         .at("/style.css", get(serve_style_css))
+        .at("/video/kikou-practice.mp4", get(serve_kikou_video))
         .at("/r.pdf", get(serve_r_pdf))
         .at("/r.xlsx", get(serve_r_xlsx))
         .at("/s.pdf", get(serve_s_pdf))
