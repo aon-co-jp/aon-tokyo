@@ -21,3 +21,7 @@ cargo build --release
 ## ライセンス
 
 Apache-2.0 OR MIT
+
+---
+
+作者 / Author: 石塚正浩（MASAHIRO ISHIZUKA） (https://github.com/aon-co-jp)
