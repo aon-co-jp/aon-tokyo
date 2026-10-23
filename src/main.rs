@@ -11,6 +11,7 @@
 
 use poem::http::StatusCode;
 use poem::listener::TcpListener;
+use poem::endpoint::StaticFilesEndpoint;
 use poem::{get, handler, IntoResponse, Response, Route, Server};
 
 #[handler]
@@ -112,11 +113,35 @@ async fn serve_s_xlsx() -> Response {
     .await
 }
 
+/// 環境変数 AON_TOP_HIDDEN が設定されているとき、全パスで404エラー画面を返す
+/// (2026-10-20: TOPページ非公開化。static/ の実ファイルは削除せず保存したまま)。
+#[handler]
+async fn hidden_404() -> Response {
+    match tokio::fs::read("static/404.html").await {
+        Ok(bytes) => Response::builder()
+            .status(StatusCode::NOT_FOUND)
+            .header("Content-Type", "text/html; charset=utf-8")
+            .body(bytes),
+        Err(_) => StatusCode::NOT_FOUND.into_response(),
+    }
+}
+
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
     tracing_subscriber::fmt::init();
 
+    if std::env::var_os("AON_TOP_HIDDEN").is_some() {
+        // 動画だけは公開(ユーザー指示 2026-10-23): /video/fukuyama/ 配下のみ。TOPページ等は404のまま。
+        let app = Route::new()
+            .nest("/video/fukuyama", StaticFilesEndpoint::new("video/fukuyama"))
+            .at("/", get(hidden_404))
+            .at("/*path", get(hidden_404));
+        tracing::info!("aon-tokyo-server (TOP hidden: all paths 404) listening on 127.0.0.1:4200");
+        return Server::new(TcpListener::bind("127.0.0.1:4200")).run(app).await;
+    }
+
     let app = Route::new()
+        .nest("/video/fukuyama", StaticFilesEndpoint::new("video/fukuyama"))
         .at("/", get(serve_top))
         .at("/healthz", get(healthz))
         .at("/links", get(serve_links))
