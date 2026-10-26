@@ -131,9 +131,12 @@ async fn main() -> Result<(), std::io::Error> {
     tracing_subscriber::fmt::init();
 
     if std::env::var_os("AON_TOP_HIDDEN").is_some() {
-        // 動画だけは公開(ユーザー指示 2026-10-23): /video/fukuyama/ 配下のみ。TOPページ等は404のまま。
+        // 動画(/video/fukuyama/ 配下)と PDF(/r.pdf・/s.pdf)だけは公開。TOPページ等は404のまま。
         let app = Route::new()
             .nest("/video/fukuyama", StaticFilesEndpoint::new("video/fukuyama"))
+            // PDF も公開(ユーザー指示 2026-10-26): /r.pdf と /s.pdf のみ
+            .at("/r.pdf", get(serve_r_pdf))
+            .at("/s.pdf", get(serve_s_pdf))
             .at("/", get(hidden_404))
             .at("/*path", get(hidden_404));
         tracing::info!("aon-tokyo-server (TOP hidden: all paths 404) listening on 127.0.0.1:4200");
