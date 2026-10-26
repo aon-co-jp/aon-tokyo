@@ -130,22 +130,14 @@ async fn hidden_404() -> Response {
 async fn main() -> Result<(), std::io::Error> {
     tracing_subscriber::fmt::init();
 
-    if std::env::var_os("AON_TOP_HIDDEN").is_some() {
-        // 動画(/video/fukuyama/ 配下)と PDF(/r.pdf・/s.pdf)だけは公開。TOPページ等は404のまま。
-        let app = Route::new()
-            .nest("/video/fukuyama", StaticFilesEndpoint::new("video/fukuyama"))
-            // PDF も公開(ユーザー指示 2026-10-26): /r.pdf と /s.pdf のみ
-            .at("/r.pdf", get(serve_r_pdf))
-            .at("/s.pdf", get(serve_s_pdf))
-            .at("/", get(hidden_404))
-            .at("/*path", get(hidden_404));
-        tracing::info!("aon-tokyo-server (TOP hidden: all paths 404) listening on 127.0.0.1:4200");
-        return Server::new(TcpListener::bind("127.0.0.1:4200")).run(app).await;
-    }
-
-    let app = Route::new()
+    // AON_TOP_HIDDEN が設定されているとき、TOP(`/`)だけを 404 にする(ユーザー指示 2026-10-26)。
+    // /cancer・/links・/municipal・/p・/k・PDF・xlsx・動画など、その下の階層は、すべて公開のまま。
+    // 未定義のパスも、素っ気ない既定の 404 ではなく、同じ 404 ページを返す。
+    let hidden = std::env::var_os("AON_TOP_HIDDEN").is_some();
+    let top = if hidden { get(hidden_404) } else { get(serve_top) };
+    let mut app = Route::new()
         .nest("/video/fukuyama", StaticFilesEndpoint::new("video/fukuyama"))
-        .at("/", get(serve_top))
+        .at("/", top)
         .at("/healthz", get(healthz))
         .at("/links", get(serve_links))
         .at("/municipal", get(serve_municipal))
@@ -160,6 +152,9 @@ async fn main() -> Result<(), std::io::Error> {
         .at("/r.xlsx", get(serve_r_xlsx))
         .at("/s.pdf", get(serve_s_pdf))
         .at("/s.xlsx", get(serve_s_xlsx));
+    if hidden {
+        app = app.at("/*path", get(hidden_404));
+    }
 
     tracing::info!("aon-tokyo-server listening on 127.0.0.1:4200");
     Server::new(TcpListener::bind("127.0.0.1:4200")).run(app).await
