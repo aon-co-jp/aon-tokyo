@@ -1,3 +1,5 @@
+> Latest translations / 翻訳の最新版: [0-LATEST-TRANSLATIONS.md](0-LATEST-TRANSLATIONS.md)
+
 # aon-tokyo-server
 
 `aon.tokyo` / `aon.co.jp`(同一内容配信)のTOPページ。Rust + Poem製、DB非依存の1バイナリ完結サーバー。
